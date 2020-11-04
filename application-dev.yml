@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka1:6011/eureka,http://eureka2:6012/eureka
+      defaultZone: http://127.0.0.1:6011/eureka/
 #整合mybatis
 mybatis:
   #config-location: mybatis-config.xml
