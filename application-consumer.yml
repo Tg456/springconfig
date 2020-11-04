@@ -1,1 +1,27 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: user-consumer
+  resources:
+    static-locations: classpath:/templates/,classpath:/META-NF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6011/eureka
+feign:
+  hystrix:
+    enabled: false
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #include: hystrix.stream
+  endpoint:
+    health:
+      show-details: ALWAYS
+#users-provider: #服务名
+  #ribbon:
+    #NFloadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule  #随机
