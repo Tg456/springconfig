@@ -1,1 +1,45 @@
-这是一个测试
+server:
+  port: 7001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:6011/eureka,http://eureka2:6012/eureka
+#整合mybatis
+mybatis:
+  #config-location: mybatis-config.xml
+  type-aliases-package: com.cssl.dto
+  #mapper-locations: classpath:com/cssl/mapper/*.xml 也可以用注解扫描接口
+  configuration:
+    auto-mapping-behavior: full
+    use-generated-keys: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#spring的配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smbms?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: tanggang
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  application:
+    name: users-provider
+pagehelper:
+  auto-dialect: true
+  page-size-zero: true
+  reasonable: true
+#熔断的配置
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #include: hystrix.stream
+  endpoint:
+    health:
+      show-details: ALWAYS
