@@ -1,1 +1,26 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: gateway-zuul
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6011/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+zuul:
+  routes:
+    users-provider: /provider/*
+    user-consumer: /consumer/*
+  prefix: /gateway                       #前缀
+  ignored-services: '*'                  #禁用服务名访问(内网不受该限制)
+  ignored-patterns: /**/cmap/**    #禁用某些路径
+  sensitive-headers: '*'                 #解决走网关session变化,隐藏真实路径
