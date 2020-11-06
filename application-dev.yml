@@ -5,7 +5,7 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:6011/eureka/
 qc:
-  sb: 蠢狗7878
+  sb: 蠢狗88900
 #整合mybatis
 mybatis:
   #config-location: mybatis-config.xml
